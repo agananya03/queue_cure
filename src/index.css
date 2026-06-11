@@ -1,0 +1,278 @@
+/* Custom properties mapping the clinical design system */
+:root {
+  /* Colors */
+  --color-primary: #0066CC;
+  --color-primary-dark: #004C99;
+  --color-primary-light: #E8F2FF;
+  --color-success: #00A86B;
+  --color-warning: #F59E0B;
+  --color-danger: #DC2626;
+  --color-background: #F7F9FC;
+  --color-surface: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-text-muted: #94A3B8;
+  --color-accent-teal: #0891B2;
+
+  /* Typography Fonts */
+  --font-body: 'Inter', sans-serif;
+  --font-heading: 'DM Sans', sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-card: 0 2px 8px rgba(0, 102, 204, 0.08);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* Global Transitions and Base Setup */
+* {
+  transition: all 200ms ease;
+  font-family: var(--font-body);
+}
+
+/* Override inputs and range track transitions so dragging feels immediate */
+input[type="range"],
+input[type="range"]::-webkit-slider-thumb {
+  transition: none !important;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  /* Subtle dot-grid pattern using radial gradients */
+  background-image: radial-gradient(#CBD5E1 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Smooth custom scrollbar for medical aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Pure CSS Click Ripple Effect */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-btn::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.35) 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform 0.4s, opacity 0.8s;
+}
+
+.ripple-btn:active::after {
+  transform: scale(0, 0);
+  opacity: 0.35;
+  transition: 0s;
+}
+
+/* Global Button Scaling Micro-interaction */
+button, .ripple-btn {
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+button:active:not(:disabled), .ripple-btn:active:not(:disabled) {
+  transform: scale(0.97) !important;
+}
+
+/* Skeleton Loading Shimmer Keyframes and Utilities */
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite linear;
+}
+
+.animate-shimmer-dark {
+  background: linear-gradient(90deg, #0D1F35 25%, #1A304D 50%, #0D1F35 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite linear;
+}
+
+/* -------------------------------------------------------------
+   ACCESSIBILITY & HIGH CONTRAST STYLES
+   ------------------------------------------------------------- */
+
+/* Custom focus ring indicator visible on tab navigation */
+*:focus-visible {
+  outline: 3px solid var(--color-accent-teal) !important;
+  outline-offset: 3px !important;
+}
+
+/* High Contrast Mode Body Override Rules */
+body.high-contrast {
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+}
+
+body.high-contrast,
+body.high-contrast * {
+  /* Override gradients, custom shadows, and backgrounds to preserve absolute black/white contrast */
+  background-color: #000000 !important;
+  background-image: none !important;
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  border-color: #FFFFFF !important;
+}
+
+/* Override borders specifically to ensure they are visible on dark background */
+body.high-contrast div,
+body.high-contrast section,
+body.high-contrast aside,
+body.high-contrast main,
+body.high-contrast header,
+body.high-contrast footer,
+body.high-contrast nav,
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast button,
+body.high-contrast span.token-badge,
+body.high-contrast a,
+body.high-contrast table,
+body.high-contrast th,
+body.high-contrast td {
+  border-color: #FFFFFF !important;
+}
+
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast textarea {
+  border: 2px solid #FFFFFF !important;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+body.high-contrast button,
+body.high-contrast a {
+  border: 2px solid #FFFFFF !important;
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
+}
+
+body.high-contrast button:hover,
+body.high-contrast button:focus,
+body.high-contrast a:hover,
+body.high-contrast a:focus {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+body.high-contrast button:hover *,
+body.high-contrast button:focus *,
+body.high-contrast a:hover *,
+body.high-contrast a:focus * {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+/* Icons styling in high contrast */
+body.high-contrast svg {
+  stroke: #FFFFFF !important;
+  fill: none !important;
+}
+
+body.high-contrast svg.fill-current {
+  fill: #FFFFFF !important;
+  stroke: none !important;
+}
+
+body.high-contrast button:hover svg,
+body.high-contrast button:focus svg,
+body.high-contrast a:hover svg,
+body.high-contrast a:focus svg {
+  stroke: #000000 !important;
+  fill: none !important;
+}
+
+body.high-contrast button:hover svg.fill-current,
+body.high-contrast button:focus svg.fill-current,
+body.high-contrast a:hover svg.fill-current,
+body.high-contrast a:focus svg.fill-current {
+  fill: #000000 !important;
+  stroke: none !important;
+}
+
+/* Keep the focus ring prominent in high contrast mode */
+body.high-contrast *:focus-visible {
+  outline: 4px solid #00FFFF !important;
+  outline-offset: 4px !important;
+}
+
+/* Styled focus states for inputs */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3.5px rgba(0, 102, 204, 0.22) !important;
+  outline: none !important;
+}
+
+/* Thin rounded scrollbar for patient list */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+
