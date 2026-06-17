@@ -15,10 +15,12 @@ Queue Cure is a real-time, low-latency hospital queue management application des
 ## 📸 Screenshots
 
 ### Receptionist Control Console
-`[ADD SCREENSHOT HERE: Receptionist Panel Dashboard]`
+<img width="1912" height="986" alt="Screenshot 2026-06-17 130434" src="https://github.com/user-attachments/assets/78312cbe-762d-45e4-b065-bf21360c84bd" />
+
 
 ### Public Lobby Scoreboard
-`[ADD SCREENSHOT HERE: Lobby Display TV Screen]`
+<img width="1918" height="883" alt="Screenshot 2026-06-17 130501" src="https://github.com/user-attachments/assets/7ba51514-3853-4e87-8801-108ee15a7ab0" />
+
 
 ---
 
